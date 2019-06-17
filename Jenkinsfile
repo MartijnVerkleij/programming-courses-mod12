@@ -1,14 +1,4 @@
 pipeline {
-/*    agent any 
-    stages {
-        stage('Java Stage') {
-            steps {
-                junit 'build/reports/**/*.xml'
-            }
-        }
-    }
-    */
-    
     agent { docker { image 'python:2.7' } }
         stages {
             /*stage('build') {
