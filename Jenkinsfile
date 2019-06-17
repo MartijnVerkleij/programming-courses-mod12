@@ -3,7 +3,7 @@ pipeline {
         stages {
             stage('test') {
                 steps {
-                    sh 'python search/tests.py'
+                    sh 'export DISPLAY=:0 && cd search && python tests.py'
                 }
             }
         }
