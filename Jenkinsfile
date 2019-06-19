@@ -7,7 +7,6 @@ node {
         }
     }
     stage('build-sandbox') {
-        failFast false;
         steps {
             sh '''
             rm -rf pynbox
@@ -22,7 +21,6 @@ node {
         }
     }
     stage('test') {
-        failFast false;
         steps {
             sh 'export DISPLAY=:0 && cd search && python tests.py'
         }
@@ -35,13 +33,11 @@ node {
         }
     }
     stage('checkstyle') {
-        failFast false;
         steps {
             sh 'flake8 --config=jenkins/flake8.ini search'
         }
     }
     stage('EMMA') {
-        failFast false;
         steps {
             sh 'flake8 --config=jenkins/flake8.ini search'
         }
