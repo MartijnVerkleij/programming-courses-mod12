@@ -27,7 +27,7 @@ pipeline {
             }
             stage('test-sandbox'){
                 steps {
-                    sh 'cd search && ../sandbox-env/bin/run python tests.py'
+                    sh 'export DISPLAY=:0 && cd search && ../sandbox-env/bin/run python $(pwd)/tests.py'
                 }
             }
             stage('checkstyle') {
