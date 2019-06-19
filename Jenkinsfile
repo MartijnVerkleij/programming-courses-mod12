@@ -31,8 +31,12 @@ pipeline {
             }
             stage('test-sandbox'){
                 failFast false;
+                try {
                 steps {
                     sh 'export DISPLAY=:0 && cd search && ../sandbox-env/bin/run python $(pwd)/tests.py'
+                }
+                } catch (Exception e) {
+                    unstable e.getMessage()
                 }
             }
             stage('checkstyle') {
