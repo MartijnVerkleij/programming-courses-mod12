@@ -1,7 +1,5 @@
 node {
     stage('build-flake') {
-
-        failFast false;
         steps {
             sh 'pip install flake8'
         }
