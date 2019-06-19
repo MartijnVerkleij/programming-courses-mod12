@@ -25,9 +25,10 @@ node {
         }
     }
     stage('checkstyle') {
-        sh 'flake8 --config=jenkins/flake8.ini search'
-    }
-    stage('EMMA') {
-        sh 'flake8 --config=jenkins/flake8.ini search'
+        try {
+            sh 'flake8 --config=jenkins/flake8.ini search'
+        } catch (Exception e) {
+            unstable e.getMessage()
+        }
     }
 }
