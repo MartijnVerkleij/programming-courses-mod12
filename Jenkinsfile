@@ -1,13 +1,15 @@
 pipeline {
     agent any
         stages {
-            failFast false;
             stage('build-flake') {
+            
+                failFast false;
                 steps {
                     sh 'pip install flake8'
                 }
             }
             stage('build-sandbox') {
+                failFast false;
                 steps {
                     sh '''
                     rm -rf pynbox
@@ -22,21 +24,25 @@ pipeline {
                 }
             }
             stage('test') {
+                failFast false;
                 steps {
                     sh 'export DISPLAY=:0 && cd search && python tests.py'
                 }
             }
             stage('test-sandbox'){
+                failFast false;
                 steps {
                     sh 'export DISPLAY=:0 && cd search && ../sandbox-env/bin/run python $(pwd)/tests.py'
                 }
             }
             stage('checkstyle') {
+                failFast false;
                 steps {
                     sh 'flake8 --config=jenkins/flake8.ini search'
                 }
             }
             stage('EMMA') {
+                failFast false;
                 steps {
                     sh 'flake8 --config=jenkins/flake8.ini search'
                 }
