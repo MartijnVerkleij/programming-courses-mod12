@@ -15,6 +15,7 @@ pipeline {
                     cd pynbox
                     ./pynbox install ../sandbox-env python tests
 
+                    cd ../
                     sandbox-env/bin/test_pynbox
                     '''
                 }
