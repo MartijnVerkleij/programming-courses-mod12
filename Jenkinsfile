@@ -27,7 +27,7 @@ pipeline {
             }
             stage('test-sandbox'){
                 steps {
-                    sh 'sandbox-env/bin/run python tests.py'
+                    sh 'cd search && ../sandbox-env/bin/run python tests.py'
                 }
             }
             stage('checkstyle') {
