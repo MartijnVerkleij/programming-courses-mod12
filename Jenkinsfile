@@ -9,6 +9,7 @@ pipeline {
             stage('build-sandbox') {
                 steps {
                     sh '''
+                    rm -rf pynbox
                     git clone https://github.com/dsagal/pynbox.git
 
                     cd pynbox
