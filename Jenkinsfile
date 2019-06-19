@@ -13,7 +13,7 @@ pipeline {
                     git clone https://github.com/dsagal/pynbox.git
 
                     cd pynbox
-                    ./pynbox install sandbox-env python tests
+                    ./pynbox install ../sandbox-env python tests
 
                     sandbox-env/bin/test_pynbox
                     '''
