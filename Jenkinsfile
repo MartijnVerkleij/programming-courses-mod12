@@ -21,7 +21,7 @@ pipeline {
             }
             stage('test') {
                 steps {
-                    sh 'export DISPLAY=0 && cd search && python tests.py'
+                    sh 'export DISPLAY=:0 && cd search && python tests.py'
                 }
             }
             stage('test-sandbox'){
