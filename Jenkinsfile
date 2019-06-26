@@ -17,18 +17,15 @@ node {
     stage('test') {
         sh 'export DISPLAY=:0 && cd search && python tests.py'
     }
-    stage('test-sandbox') {
-        try {
+    
+    catchError {
+        stage('test-sandbox') {
             sh 'export DISPLAY=:0 && cd search && ../sandbox-env/bin/run python $(pwd)/tests.py'
-        } catch (Exception e) {
-            unstable e.getMessage()
         }
     }
-    stage('checkstyle') {
-        try {
+    catchError {
+        stage('checkstyle') {
             sh 'flake8 --config=jenkins/flake8.ini search'
-        } catch (Exception e) {
-            unstable e.getMessage()
         }
     }
 }
