@@ -29,5 +29,6 @@ node {
         }
     }
     
-    currentBuild.result = "SUCCESS"
+    currentBuild.rawBuild.@result = hudson.model.Result.SUCCESS
+s
 }
