@@ -8,7 +8,6 @@ install:
 
 matrix:
   include:
-  before_script:
   - env: SCRIPT='python tests.py'
     before_script: 'cd search && export DISPLAY=:99.0 && sh -e /etc/init.d/xvfb start && sleep 3' # give xvfb some time to start
   - env: SCRIPT=flake8 --config=jenkins/flake8.ini search
