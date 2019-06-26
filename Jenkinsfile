@@ -28,4 +28,6 @@ node {
             sh 'flake8 --config=jenkins/flake8.ini search'
         }
     }
+    
+    currentBuild.result = "SUCCESS"
 }
