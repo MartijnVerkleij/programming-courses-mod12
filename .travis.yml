@@ -6,6 +6,8 @@ install:
   - pip install flake8
 
 matrix:
-  - script:
-    - cd search && python tests.py
-    - flake8 --config=jenkins/flake8.ini search
+  - include:
+    - name: "Unit Tests"
+      script: cd search && python tests.py
+    - name: "Code Style"
+      script: flake8 --config=jenkins/flake8.ini search
