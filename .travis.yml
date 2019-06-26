@@ -5,9 +5,7 @@ python:
 install:
   - pip install flake8
 
-env :
-  - SCRIPT='cd search && python tests.py'
-  - SCRIPT=flake8 --config=jenkins/flake8.ini search
-
-script:
-  - $SCRIPT
+matrix:
+  - script:
+    - cd search && python tests.py
+    - flake8 --config=jenkins/flake8.ini search
