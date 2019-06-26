@@ -7,7 +7,7 @@ install:
 
 matrix:
   include:
-  - env: SCRIPT=python tests
+  - env: SCRIPT='python tests.py'
     before_script: cd search
   - env: SCRIPT=flake8 --config=jenkins/flake8.ini search
 
