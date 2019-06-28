@@ -1,0 +1,18 @@
+dist: 'xenial'
+language: Python
+python: 
+  - "2.7"
+
+install:
+  - pip install flake8
+
+matrix:
+  include:
+  - env: SCRIPT='python tests.py'
+    services:
+    - xvfb
+    before_script: 'cd search'
+  - env: SCRIPT=flake8 --config=jenkins/flake8.ini search
+
+script:
+  - $SCRIPT
