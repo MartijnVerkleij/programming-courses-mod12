@@ -8,7 +8,7 @@ install:
 
 matrix:
   include:
-  - env: SCRIPT='python tests.py'
+  - env: SCRIPT='python tests.py init'
     services:
     - xvfb
     before_script: 'cd search'
