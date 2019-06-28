@@ -14,8 +14,28 @@ node {
         sandbox-env/bin/test_pynbox
         '''
     }
-    stage('test') {
-        sh 'export DISPLAY=:0 && cd search && python tests.py'
+    catchError {
+        stage('testRunning') {
+            sh 'export DISPLAY=:0 && cd search && python tests.py'
+        }
+    }
+    
+    catchError {
+        stage('testEightPuzzle') {
+            sh 'python eightpuzzle.py'
+        }
+    }
+    
+    catchError {
+        stage('testEast') {
+            sh 'export DISPLAY=:0 && cd search && python pacman.py -l mediumDottedMaze -p StayEastSearchAgent'
+        }
+    }
+    
+    catchError {
+        stage('testWest') {
+            sh 'export DISPLAY=:0 && cd search && python pacman.py -l mediumScaryMaze -p StayWestSearchAgent'
+        }
     }
     
     catchError {
